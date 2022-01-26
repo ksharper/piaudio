@@ -1,0 +1,13 @@
+[Unit]
+Description=Volume knob
+
+[Service]
+User=pi
+Group=pi
+ExecStart=/home/pi/rotary.py
+WorkingDirectory=/home/pi/
+Restart=on-failure
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

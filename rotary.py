@@ -1,10 +1,12 @@
+#!/usr/bin/env python3
+
 from RPi import GPIO
 from time import sleep
 import subprocess
 
 clk = 22
-dt = 17
-btn = 27
+dt = 27
+btn = 17
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(clk, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -14,7 +16,7 @@ GPIO.setup(btn, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 clkLastState = GPIO.input(clk)
 
 def swClicked(channel):
-        subprocess.call(['amixer', '-q', 'set', 'Attenuation', 'toggle'])   
+        subprocess.call(['amixer', '-q', 'set', 'Attenuation', 'toggle'])
 
 GPIO.add_event_detect(btn, GPIO.FALLING, callback=swClicked, bouncetime=300)
 
